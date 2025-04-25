@@ -299,7 +299,8 @@ class LinsooSaveImage:
         self.__m_ckpt_name, self.__m_samplers, self.__m_prompt, self.__m_clip_skip, self.__m_loras = linsoo_parse_prompt(prompt,extra_pnginfo,unique_id,ckpt_path, loras_path)
         # -------------------------------------------------------------------
         results = []
-        for image in images:
+        batchTotalCount = len(images) # 배치갯수를 구함
+        for (batch_number, image) in enumerate(images):
             array = 255. * image.cpu().numpy()
             img = Image.fromarray(numpy.clip(array, 0, 255).astype(numpy.uint8))
 
@@ -348,6 +349,10 @@ class LinsooSaveImage:
             if  len(filename_prefix) <= 0:
                 filename_prefix = 'Linsoo_%date:YYYYMMDD_hhmmss%'
             ret = self.__parse_filename_prefix(filename_prefix)
+            
+            # 배치 사이즈가 1개 이상이면 뒤에 번호를 붙여준다
+            if batchTotalCount > 1:
+                ret = ret + f"_({batch_number})"
 
             subfolder = os.path.dirname(ret)
             filename = f"{os.path.basename(ret)}{file_type}"

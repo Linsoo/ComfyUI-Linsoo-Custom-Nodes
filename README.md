@@ -3,22 +3,18 @@
 대부분의 테스트는 Comfy 기본 노드들로 구성된 workflow에서 테스트 됐습니다. (커스텀 노드 사용시  제대로 작동 안할 수 있습니다.)
 <br>
 
-## 1. 필요 라이브러리
-```console
-pillow, piexif
-```
-<br>
-
-## 2. 설치방법.
+## 1. 설치방법.
 설치하려면 다음과 같이 이 저장소를 ComfyUI/custom_nodes 폴더로 복제합니다.
 
 ```console
 git clone https://github.com/Linsoo/ComfyUI-Linsoo-Custom-Nodes.git
 ```
+pip로 필수 라이브러리를 추가합니다.
+```console
+pip install pillow, piexif
+```
 
-
-ComfyUI-Manager 등록은 조금 뒤로 미룹니다. 처음에 번역기 돌려가면서 잘 모르는 상태에 시도했다가 뭔가 꼬였는데 깃헙리포 url이 박제된건지 같은 url에선 
-재등록도 안되는 상태가 되서 이름까지 바꿨습니다. 또 바꾸긴 싫으니 설명서 좀 잘 읽어보고 다시 시도 할 생각입니다.
+Comfy Registry 등록은 나중에 할께요.
 
 <br>
 
@@ -76,4 +72,4 @@ ComfyUI-Manager 등록은 조금 뒤로 미룹니다. 처음에 번역기 돌려
 >이 노드 사용시 output 폴더에 extra_pnginfo.json, prompt.json 파일이 생깁니다. 에러 발생시 이 두 파일을 같이 올려주시면 디버깅에 큰 도움이 됩니다.
 
 블로그 : https://linsoo.pe.kr
-버전 : 1.2.2
+버전 : 1.2.3
